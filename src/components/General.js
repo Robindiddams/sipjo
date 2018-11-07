@@ -1,4 +1,13 @@
 import styled, { keyframes } from 'styled-components';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import React from 'react';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+
+/*
+	Animations
+*/
 
 export const Expand = keyframes`
   from {
@@ -9,6 +18,10 @@ export const Expand = keyframes`
   }
 `;
 
+/*
+	General
+*/
+
 export const Page = styled.div`
 	max-width: 1000px;
 	padding: 10px;
@@ -16,7 +29,7 @@ export const Page = styled.div`
 	padding-right: 50px;
 	padding-bottom: 20px;
 	box-shadow: 1px 2px 3px lightgrey;
-	width: 90%;
+	// width: 90%;
 	margin: auto;
 	margin-top: 10vh;
 	background: white;
@@ -49,3 +62,66 @@ export const Title = styled.div`
     margin-top: 10px;
 `;
 
+/*
+		Inputs
+*/
+
+const InputWrapper = styled.div`
+	margin-right:10px;
+`;
+
+const FancyLabel = styled(({ ...other }) => (
+  <InputLabel {...other} classes={{ focused: 'focused' }} />
+))`
+	&.focused {
+		color: lightsalmon !important;
+	}
+`;
+
+const FancyInput =styled(({ color, ...other }) => (
+  <Input {...other} classes={{ underline: 'underline' }} />
+))`
+	min-width: ${props => props.size ? props.size : '5em'};
+	&.underline {
+		&:after {
+			color: lightsalmon;
+			border-bottom: 2px solid lightsalmon;
+		}
+	}
+`;
+
+export class TextBox extends React.Component {
+	render() {
+	  return (
+		<InputWrapper>
+			<FormControl>
+				<FancyLabel>{this.props.label}</FancyLabel>
+				<FancyInput
+					size={this.props.size}
+					onChange={this.props.onChange}
+				/>
+			</FormControl>
+		</InputWrapper>
+	  );
+	}
+}
+
+
+export class SelectBox extends React.Component {
+	render() {
+	  return (
+		<InputWrapper>
+			<FormControl>
+				<FancyLabel>{this.props.label}</FancyLabel>
+				<Select
+					value={this.props.value}
+					onChange={this.props.onChange}
+					input={<FancyInput size={this.props.size}/>}
+				>
+					{this.props.children}
+				</Select>
+			</FormControl>
+		</InputWrapper>
+	  );
+	}
+}

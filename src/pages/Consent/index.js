@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {
 	Text,
-	ConsentInput,
 	Article,
 	ConsentInputWrapper
 } from './components';
 import {
 	Page,
 	Title,
-	NextButton
+	NextButton,
+	TextBox,
 } from '../../components/General';
 
 
@@ -52,13 +52,13 @@ export default class Consent extends Component {
 						I have read and understand this information, all of my questions have been answered, and I give my consent to participate.	
 					</Article>
 					<ConsentInputWrapper>
-						<ConsentInput
-							type="text"
-							placeholder="Enter your full name"
-							value={this.state.value}
+						<TextBox
+							label='Full name'
 							onChange={(event) => {
 								this.setState({value: event.target.value})
-							}} />
+							}}
+							size='10em'
+						/>
 					</ConsentInputWrapper>
 					{ this.state.value !== '' ? <NextButton onClick={() => {
 						// make req to server
