@@ -46,10 +46,3 @@ export const Text = styled.div`
     font-size: 5;
     padding: 20px;
 `;
-
-export const Hr = styled.div`
-    height: 1px;
-    margin-left: 30px;
-    margin-right: 30px;
-    background: lightgrey;
-`;

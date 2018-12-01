@@ -4,6 +4,7 @@ import Select from '@material-ui/core/Select';
 import React from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 /*
 	Animations
@@ -21,6 +22,14 @@ export const Expand = keyframes`
 /*
 	General
 */
+
+export const Label = styled.div`
+	font-family: roboto, sans-serif;
+	color: grey;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: ${props => props.align ? props.align : 'center'};
+`;
 
 export const Page = styled.div`
 	max-width: 1000px;
@@ -52,6 +61,13 @@ export const NextButton = styled.button`
         color: lightsalmon;
 		}
 		
+`;
+
+export const Hr = styled.div`
+    height: 1px;
+    margin-left: ${props => props.margin ? props.margin : '30px'};
+    margin-right: ${props => props.margin ? props.margin : '30px'};
+    background: ${props => props.color ? props.color : 'lightgrey'};
 `;
 
 export const Title = styled.div`
@@ -125,3 +141,26 @@ export class SelectBox extends React.Component {
 	  );
 	}
 }
+
+/*
+ Spinner
+*/
+
+const SalmonSpinner = styled(({ ...other }) => (
+	<CircularProgress {...other} classes={{ root: 'root', colorPrimary: 'colorPrimary' }} />
+))`
+	&.colorPrimary {
+		color: lightsalmon !important;
+	}
+`;
+
+const LoadingWrapper = styled.div`
+	margin: auto;
+	margin: 80px;
+`;
+
+export const Loading = props => (
+	<LoadingWrapper>
+		<SalmonSpinner/>
+	</LoadingWrapper>
+);

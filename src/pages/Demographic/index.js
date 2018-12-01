@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-	Label,
 	InfoRow,
 } from './components';
 import {
 	Page,
+	Label,
 	Title,
 	NextButton,
 	SelectBox,
@@ -15,7 +15,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 export default class Demographic extends Component {
 	state = {
 		age:'',
-		sex:'',
 		gender: '',
 		ethnicity:'',
 		religion:'',
@@ -25,7 +24,6 @@ export default class Demographic extends Component {
 	render() {
 		/*
 		Age (have a box for them to write it in)
-		Sex (male, female)
 		Gender (male, female, nonb)
 		Ethnicity (white, African American, Asian, Hispanic/Latinx American, Pacific Islander, Native American, other)
 		Religion/spirituality (Christian, catholic, Jewish, Islam, Buddhist, Hindu, new age, none, other)
@@ -35,10 +33,6 @@ export default class Demographic extends Component {
 			'male',
 			'female',
 			'nonbinary',
-		];
-		const sexes = [
-			'male',
-			'female',
 		];
 		const ethnicities = [
 			'White',
@@ -69,7 +63,6 @@ export default class Demographic extends Component {
 
 		const checkValues = () => {
 			return genders.indexOf(this.state.gender) !== -1 && 
-				sexes.indexOf(this.state.sex) !== -1 && 
 				ethnicities.indexOf(this.state.ethnicity) !== -1 && 
 				religions.indexOf(this.state.religion) !== -1 && 
 				educations.indexOf(this.state.education) !== -1 &&
@@ -81,7 +74,7 @@ export default class Demographic extends Component {
 					<Title>
 						Basic Info
 					</Title>
-					<Label>Please fill out all of these</Label>
+					<Label align='left'>Please fill out all of these</Label>
 					<InfoRow>
 						<SelectBox
 							label='gender'
@@ -91,15 +84,6 @@ export default class Demographic extends Component {
 							}}
 						>
 							{genders.map((gender) => { return(<MenuItem value={gender}>{gender}</MenuItem>);})}
-						</SelectBox>
-						<SelectBox
-							label='sex'
-							value={this.state.sex}
-							onChange={(event) => {
-								this.setState({sex:event.target.value})
-							}}
-						>
-							{sexes.map((sex) => { return(<MenuItem value={sex}>{sex}</MenuItem>);})}
 						</SelectBox>
 						<SelectBox
 							label='ethnicity'
@@ -140,7 +124,7 @@ export default class Demographic extends Component {
 							{educations.map((education) => { return(<MenuItem value={education}>{education}</MenuItem>);})}
 						</SelectBox>
 					</InfoRow>
-					<Label>This information will not be linked to your name.</Label>
+					<Label align='left'>This information will not be linked to your name.</Label>
 					{ checkValues() ? <NextButton onClick={() => {
 						// TODO: put data in session storage
 						this.props.nextPage();

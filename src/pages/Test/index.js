@@ -4,6 +4,8 @@ import {
 } from './components';
 import Consent from  '../Consent';
 import Demographic from  '../Demographic';
+import Eval from  '../Eval';
+import Hexaco from  '../Hexaco';
 import {
 	Page,
 	Title,
@@ -30,6 +32,22 @@ export default class Test extends Component {
 					<Demographic
 						nextPage={() => {
 							this.setState({page: 2});
+						}}
+					/>
+				);
+			case 2:
+				return (
+					<Eval
+						nextPage={() => {
+							this.setState({page: 3});
+						}}
+					/>
+				);
+			case 3:
+				return (
+					<Hexaco
+						nextPage={() => {
+							this.setState({page: 4});
 						}}
 					/>
 				);

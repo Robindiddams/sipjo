@@ -4,9 +4,10 @@ import {
 	StartButton,
 	Title,
 	Text,
-	Hr,
 } from './components';
-
+import {
+	Hr,
+} from '../../components/General';
 
 export default class Home extends Component {
 	render() {
