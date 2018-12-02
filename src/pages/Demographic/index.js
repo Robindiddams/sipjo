@@ -68,6 +68,7 @@ export default class Demographic extends Component {
 				educations.indexOf(this.state.education) !== -1 &&
 				this.state.age && !isNaN(this.state.age);
 		}
+
 		return (
 			<React.Fragment>
 				<Page>
@@ -83,7 +84,7 @@ export default class Demographic extends Component {
 								this.setState({gender:event.target.value})
 							}}
 						>
-							{genders.map((gender) => { return(<MenuItem value={gender}>{gender}</MenuItem>);})}
+							{genders.map((gender) => { return(<MenuItem key={gender} value={gender}>{gender}</MenuItem>);})}
 						</SelectBox>
 						<SelectBox
 							label='ethnicity'
@@ -92,7 +93,7 @@ export default class Demographic extends Component {
 								this.setState({ethnicity:event.target.value})
 							}}
 						>
-							{ethnicities.map((ethnicity) => { return(<MenuItem value={ethnicity}>{ethnicity}</MenuItem>);})}
+							{ethnicities.map((ethnicity) => { return(<MenuItem key={ethnicity} value={ethnicity}>{ethnicity}</MenuItem>);})}
 						</SelectBox>
 						<TextBox
 							onChange={(event) => {
@@ -111,7 +112,7 @@ export default class Demographic extends Component {
 								this.setState({religion:event.target.value})
 							}}
 						>
-							{religions.map((religion) => { return(<MenuItem value={religion}>{religion}</MenuItem>);})}
+							{religions.map((religion) => { return(<MenuItem key={religion} value={religion}>{religion}</MenuItem>);})}
 						</SelectBox>
 						<SelectBox
 							label='education level'
@@ -121,12 +122,12 @@ export default class Demographic extends Component {
 								this.setState({education:event.target.value})
 							}}
 						>
-							{educations.map((education) => { return(<MenuItem value={education}>{education}</MenuItem>);})}
+							{educations.map((education) => { return(<MenuItem key={education} value={education}>{education}</MenuItem>);})}
 						</SelectBox>
 					</InfoRow>
 					<Label align='left'>This information will not be linked to your name.</Label>
 					{ checkValues() ? <NextButton onClick={() => {
-						// TODO: put data in session storage
+						sessionStorage.setItem(this.props.name, JSON.stringify(this.state));
 						this.props.nextPage();
 					}}> 
 						Next

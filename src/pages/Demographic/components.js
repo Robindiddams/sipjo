@@ -7,11 +7,3 @@ export const InfoRow = styled.div`
 	display: flex;
 	margin-bottom: 30px;
 `;
-
-export const Label = styled.div`
-	font-family: roboto, sans-serif;
-	color: grey;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	text-align: left;
-`;

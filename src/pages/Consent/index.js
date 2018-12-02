@@ -61,7 +61,7 @@ export default class Consent extends Component {
 						/>
 					</ConsentInputWrapper>
 					{ this.state.value !== '' ? <NextButton onClick={() => {
-						// make req to server
+						sessionStorage.setItem(this.props.name, JSON.stringify({ name: this.state.value }));
 						this.props.nextPage();
 					}}> 
 						I have read and I consent

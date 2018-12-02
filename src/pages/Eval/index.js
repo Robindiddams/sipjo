@@ -44,7 +44,7 @@ export default class Eval extends Component {
 					<Title>
 						Self Eval
 					</Title>
-					<Label>This is where you would put a description that tells something about this page I guess?</Label>
+					<Label>Please evaluate yourself.</Label>
 					<Hr margin='0px'/>
 					{ this.state.traits ? this.state.traits.map((trait, i) => (<SlideBox
 						key={i}
@@ -60,8 +60,8 @@ export default class Eval extends Component {
 					/>)) : <Loading/> }
 					<Label>This information will not be linked to your name.</Label>
 					{ this.isComplete() ? <NextButton onClick={() => {
-						// TODO: put data in session storage
 						console.log(this.answers);
+						sessionStorage.setItem(this.props.name, JSON.stringify(this.answers));
 						this.props.nextPage();
 					}}> 
 						Next
