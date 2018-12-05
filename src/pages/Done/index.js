@@ -24,6 +24,7 @@ export default class Done extends Component {
 					{ JSON.parse(sessionStorage.getItem('results')).method === 'deflate' ? <Text>
 						The results you received from the exam were not accurate, as part of the experiment. Please do not share this information with anyone.
 						</Text> : ''}
+					<Text>If you have any questions, please email <a href='mailto:christina.knaak@mymail.champlain.edu'>christina.knaak@mymail.champlain.edu</a>.</Text>
 					<NextButton onClick={() => {
 						this.props.nextPage();
 					}}> 

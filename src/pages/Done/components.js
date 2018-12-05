@@ -5,6 +5,6 @@ export const Text = styled.div`
     font-family: roboto, sans-serif;
     color: grey;
     font-size: 5;
-    padding: 20px;
+    padding: 10px;
     max-width: 800px;
 `;
