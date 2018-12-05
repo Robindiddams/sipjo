@@ -6,4 +6,5 @@ export const Text = styled.div`
     color: grey;
     font-size: 5;
     padding: 20px;
+    max-width: 800px;
 `;

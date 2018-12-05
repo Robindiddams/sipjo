@@ -37,6 +37,7 @@ export default class Test extends Component {
 			hexaco: JSON.parse(sessionStorage.getItem('hexaco')),
 			results: JSON.parse(sessionStorage.getItem('results')),
 			scenario: JSON.parse(sessionStorage.getItem('scenario')),
+			done: JSON.parse(sessionStorage.getItem('done')),
 		};
 	}
 

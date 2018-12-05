@@ -17,8 +17,13 @@ export default class Done extends Component {
 						Thank you!
 					</Title>
 					<Text>
-						The survey is now complete. You can click home. Or just close the window.
+						Thank you for participating in this research experiment.<br/>
+						The assessment and evaluations you completed were based off of the HEXACO-PI-R.
+						You can find more information about it <a href='hex'>here</a>.
 					</Text>
+					{ JSON.parse(sessionStorage.getItem('results')).method === 'deflate' ? <Text>
+						The results you received from the exam were not accurate, as part of the experiment. Please do not share this information with anyone.
+						</Text> : ''}
 					<NextButton onClick={() => {
 						this.props.nextPage();
 					}}> 
