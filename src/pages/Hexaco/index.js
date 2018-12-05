@@ -5,10 +5,10 @@ import {
 import {
 	Page,
 	Label,
-	Loading,
 	Title,
 	NextButton,
 } from '../../components/General';
+import Questions from '../../static_data/en_60_questions';
 
 export default class Hexaco extends Component {
 	state = {
@@ -16,23 +16,8 @@ export default class Hexaco extends Component {
 	}
 	answers = {};
 
-	componentDidMount() {
-		fetch(
-			'https://8574rpcel7.execute-api.us-east-1.amazonaws.com/dev/hexaco/questions',
-			{
-				method: 'GET',
-				mode: 'cors',
-			},
-		).then(response => response.json()).then((data) => {
-			this.setState({questions: data.questions});
-		});
-	}
-
 	isComplete() {
-		if (!this.state.questions) {
-			return false;
-		}
-		const unanswered = this.state.questions.find((q) => {
+		const unanswered = Questions.find((q) => {
 			return !this.answers[q.number];
 		});
 		return unanswered === undefined;
@@ -98,8 +83,8 @@ export default class Hexaco extends Component {
 					<Title>
 						Personality Test
 					</Title>
-					{ !this.state.questions ? <Loading/> : <div>
-						{ this.state.questions.map((q, i) => {
+					<div>
+						{ Questions.map((q, i) => {
 							const { question, number } = q;
 							return (
 								<AnswerBox
@@ -120,8 +105,8 @@ export default class Hexaco extends Component {
 							this.props.nextPage();
 						}}> 
 							Next
-						</NextButton> : <NextButton disabled>Next</NextButton>}
-					</div> }
+						</NextButton> : <NextButton disabled>Next</NextButton> }
+					</div>
 				</Page>
 			</React.Fragment>
 		);

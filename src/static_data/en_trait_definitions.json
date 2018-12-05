@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Honesty-Humility",
+    "definiton": "Those with very high scores on this scale do not have any sense of entitlement and do not attempt to break rules or manipulate others for personal gain."
+  },
+  {
+    "name": "Emotionality",
+    "definiton": "Those with very high scores on this scale have a strong sense of fear and anxiety on a day-to-day basis. They have a strong need for emotional support from others and tend to have more empathy than others."
+  },
+  {
+    "name": "Extraversion",
+    "definiton": "Those with very high scores on this scale feel positively about themselves, feel confident when leading or addressing groups of people, enjoy social gatherings and interactions, and experience positive feelings of enthusiasm and energy."
+  },
+  {
+    "name": "Agreeableness",
+    "definiton": "Those with very high scores on this scale forgive the wrongs that they suffered, are lenient in judging others, are willing to compromise and cooperate with others, and can easily control their temper."
+  },
+  {
+    "name": "Conscientiousness",
+    "definiton": "Those with very high scores on this scale organize their time and their physical surroundings, work in a disciplined way toward their goals, strive for accuracy and perfection in their tasks, and deliberate carefully when making decisions."
+  },
+  {
+    "name": "Openness to Experience",
+    "definiton": "Those with very high scores on this scale become absorbed in the beauty of art and nature, are inquisitive about various domains of knowledge, use their imagination freely in everyday life, and take an interest in unusual ideas or people."
+  }
+]

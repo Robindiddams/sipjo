@@ -7,6 +7,7 @@ import Demographic from  '../Demographic';
 import Eval from  '../Eval';
 import Results from  '../Results';
 import Hexaco from  '../Hexaco';
+import Scenario from  '../Scenario';
 import {
 	Page,
 	Title,
@@ -18,6 +19,7 @@ const pageOrder = [
 	'selfeval',
 	'hexaco',
 	'results',
+	'scenario',
 ]
 
 export default class Test extends Component {
@@ -32,6 +34,7 @@ export default class Test extends Component {
 			selfeval: JSON.parse(sessionStorage.getItem('selfeval')),
 			hexaco: JSON.parse(sessionStorage.getItem('hexaco')),
 			results: JSON.parse(sessionStorage.getItem('results')),
+			scenario: JSON.parse(sessionStorage.getItem('scenario')),
 		};
 	}
 
@@ -93,6 +96,15 @@ export default class Test extends Component {
 						name='results'
 						nextPage={() => {
 							this.setState({page: 5});
+						}}
+					/>
+				);
+			case 5:
+				return (
+					<Scenario
+						name='scenario'
+						nextPage={() => {
+							this.setState({page: 6});
 						}}
 					/>
 				);

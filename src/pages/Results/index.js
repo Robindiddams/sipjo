@@ -9,6 +9,7 @@ import {
 	NextButton,
 	Loading,
 } from '../../components/General';
+import Traits from '../../static_data/en_trait_definitions';
 
 const scoreTypes = [
 	'skip',
@@ -24,25 +25,17 @@ export default class Results extends Component {
 	}
 
 	componentDidMount() {
-		fetch(
-			'https://8574rpcel7.execute-api.us-east-1.amazonaws.com/dev/hexaco/traits',
-			{
-				method: 'GET',
-				mode: 'cors',
-			},
-		).then(response => response.json()).then((data) => {
-			let testScores = JSON.parse(sessionStorage.getItem('hexaco'));
-			console.log(this.scoreType);
-			if (this.scoreType === 'skip') {
-				this.props.nextPage();
-			} else if (this.scoreType === 'deflate') {
-				testScores = Object.keys(testScores).reduce((acc, next) => {
-					acc[next] = (testScores[next] - 1.5).toFixed(2);
-					return acc;
-				}, {});
-			}
-			this.setState({ traits: data.traits, scores: testScores});
-		});
+		let testScores = JSON.parse(sessionStorage.getItem('hexaco'));
+		console.log(this.scoreType);
+		if (this.scoreType === 'skip') {
+			this.props.nextPage();
+		} else if (this.scoreType === 'deflate') {
+			testScores = Object.keys(testScores).reduce((acc, next) => {
+				acc[next] = (testScores[next] - 1.5).toFixed(2);
+				return acc;
+			}, {});
+		}
+		this.setState({ scores: testScores});
 	}
 
 	render() {
@@ -53,7 +46,7 @@ export default class Results extends Component {
 						Results
 					</Title>
 					<Label>Here are the results of your personality test</Label>
-					{ this.state.traits && this.state.scores ? this.state.traits.map((trait, i) => (<GraphBox
+					{ this.state.scores ? Traits.map((trait, i) => (<GraphBox
 						key={i}
 						value={this.state.scores[trait.name]}
 						title={trait.name}

@@ -8,30 +8,15 @@ import {
 	Page,
 	Title,
 	NextButton,
-	Loading,
 } from '../../components/General';
+import Traits from '../../static_data/en_trait_definitions';
 
 export default class Eval extends Component {
 	state = {};
 	answers = {};
 
-	componentDidMount() {
-		fetch(
-			'https://8574rpcel7.execute-api.us-east-1.amazonaws.com/dev/hexaco/traits',
-			{
-				method: 'GET',
-				mode: 'cors',
-			},
-		).then(response => response.json()).then((data) => {
-			this.setState({ traits: data.traits });
-		});
-	}
-
 	isComplete() {
-		if (!this.state.traits) {
-			return false;
-		}
-		const unanswered = this.state.traits.find((trait) => {
+		const unanswered = Traits.find((trait) => {
 			return !this.answers[trait.name];
 		});
 		return unanswered === undefined;
@@ -46,7 +31,7 @@ export default class Eval extends Component {
 					</Title>
 					<Label>Please evaluate yourself.</Label>
 					<Hr margin='0px'/>
-					{ this.state.traits ? this.state.traits.map((trait, i) => (<SlideBox
+					{ Traits.map((trait, i) => (<SlideBox
 						key={i}
 						onUpdate={(value) => {
 							this.answers[trait.name] = value;
@@ -57,7 +42,7 @@ export default class Eval extends Component {
 						}}
 						title={trait.name}
 						body={trait.definiton}
-					/>)) : <Loading/> }
+					/>)) }
 					<Label>This information will not be linked to your name.</Label>
 					{ this.isComplete() ? <NextButton onClick={() => {
 						console.log(this.answers);
