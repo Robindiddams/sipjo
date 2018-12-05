@@ -7,6 +7,7 @@ import Demographic from  '../Demographic';
 import Eval from  '../Eval';
 import Results from  '../Results';
 import Hexaco from  '../Hexaco';
+import Done from  '../Done';
 import Scenario from  '../Scenario';
 import {
 	Page,
@@ -20,6 +21,7 @@ const pageOrder = [
 	'hexaco',
 	'results',
 	'scenario',
+	'done',
 ]
 
 export default class Test extends Component {
@@ -43,9 +45,9 @@ export default class Test extends Component {
 		console.log(session);
 		const incomplete = Object.keys(session).find((page) => session[page] === null);
 		if (incomplete) {
-			for (let i = pageOrder.indexOf(incomplete) - 1; i > 0; i--) {
-				if (session[pageOrder[i]] !== undefined) {
-					this.setState({page:i+1});
+			for (let i = 0; i < pageOrder.length; i++) {
+				if (session[pageOrder[i]] === null) {
+					this.setState({page:i});
 					break;
 				}
 			}
@@ -105,6 +107,17 @@ export default class Test extends Component {
 						name='scenario'
 						nextPage={() => {
 							this.setState({page: 6});
+						}}
+					/>
+				);
+				case 6:
+				return (
+					<Done
+						name='done'
+						nextPage={() => {
+							sessionStorage.clear();
+							console.log('cleared session storage');
+							window.location = '/';
 						}}
 					/>
 				);

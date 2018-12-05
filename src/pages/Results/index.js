@@ -26,8 +26,8 @@ export default class Results extends Component {
 
 	componentDidMount() {
 		let testScores = JSON.parse(sessionStorage.getItem('hexaco'));
-		console.log(this.scoreType);
 		if (this.scoreType === 'skip') {
+			sessionStorage.setItem(this.props.name, JSON.stringify({method: this.scoreType}));
 			this.props.nextPage();
 		} else if (this.scoreType === 'deflate') {
 			testScores = Object.keys(testScores).reduce((acc, next) => {

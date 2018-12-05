@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Label } from '../../components/General';
+import {
+  Label,
+  SelectBox,
+} from '../../components/General';
 import Traits from '../../static_data/en_trait_definitions';
 import { SlideBox } from '../Eval/components';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export const Article = styled.div`
 	margin:10px;
@@ -27,6 +31,11 @@ const RateBoxWrapper = styled.div`
 	margin-top:10vh;
 `;
 
+const QuestionWrapper = styled.div`
+  margin: 10vh;
+  // display:flex;
+`;
+
 export class RateBox extends React.Component {
   render() {
     return (
@@ -42,3 +51,16 @@ export class RateBox extends React.Component {
     );
   }
 }
+
+export const Question = props => (
+		<QuestionWrapper>
+      <Label>Which of the two do you relate to most?</Label>
+      <SelectBox
+        label={props.label}
+        value={props.value}
+        onChange={props.onChange}
+      >
+        {props.items.map((item) => { return(<MenuItem key={item} value={item}>{item}</MenuItem>);})}
+      </SelectBox>
+		</QuestionWrapper>
+);

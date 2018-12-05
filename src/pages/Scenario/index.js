@@ -3,6 +3,7 @@ import {
 	Article,
 	ArticleBox,
 	RateBox,
+	Question,
 } from './components';
 import {
 	Label,
@@ -22,12 +23,8 @@ const names = [
 export default class Scenario extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = { relateToAnswer: '' };
 		this.answers = {};
-	}
-
-	componentDidMount() {
-		console.log('lol', atob(scenario_data.scenario));
 	}
 
 	traitName(trait, name) {
@@ -65,9 +62,18 @@ export default class Scenario extends Component {
 							}}
 						/>
 					))}
+					<Question
+						onChange={(event) => {
+							this.setState({relateToAnswer: event.target.value})
+						}}
+						items={names}
+						value={this.state.relateToAnswer}
+						label='select'
+					/>
 					<Label>This information will not be linked to your name.</Label>
-					{ this.state.done ? <NextButton onClick={() => {
-						sessionStorage.setItem(this.props.name, JSON.stringify({method: this.scoreType}));
+					{ this.state.done && this.state.relateToAnswer ? <NextButton onClick={() => {
+						this.answers.relatesTo = this.state.relateToAnswer;
+						sessionStorage.setItem(this.props.name, JSON.stringify(this.answers));
 						this.props.nextPage();
 					}}> 
 						Next

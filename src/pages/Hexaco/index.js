@@ -67,7 +67,7 @@ export default class Hexaco extends Component {
 		return {
 			'Honesty-Humility': calculate(honestyHumility),
 			'Emotionality': calculate(emotionality),
-			'eXtraversion': calculate(extraversion),
+			'Extraversion': calculate(extraversion),
 			'Agreeableness': calculate(agreeableness),
 			'Conscientiousness': calculate(conscientiousness),
 			'Openness to Experience': calculate(opennessToExperience),
@@ -76,7 +76,6 @@ export default class Hexaco extends Component {
 	
 
 	render() {
-
 		return (
 			<React.Fragment>
 				<Page>
