@@ -19,7 +19,7 @@ export default class Done extends Component {
 					<Text>
 						Thank you for participating in this research experiment.<br/>
 						The assessment and evaluations you completed were based off of the HEXACO-PI-R.
-						You can find more information about it <a href='hex'>here</a>.
+						You can find more information about it <a href='http://hexaco.org'>here</a>.
 					</Text>
 					{ JSON.parse(sessionStorage.getItem('results')).method === 'deflate' ? <Text>
 						The results you received from the exam were not accurate, as part of the experiment. Please do not share this information with anyone.

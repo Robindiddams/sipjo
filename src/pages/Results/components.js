@@ -57,7 +57,7 @@ export class GraphBox extends React.Component {
 	  return (
 		<GraphBoxWrapper>
 			<Title>{this.props.title}:</Title>
-			<Number>{this.props.value}</Number>
+			<Number>{this.props.value}/5.00</Number>
 			<Meter>
 				<Bar
 					value={this.props.value * 20}
