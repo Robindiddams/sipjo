@@ -34,7 +34,10 @@ export default class Scenario extends Component {
 	isComplete() {
 			const checkName = (name) => {
 				const unanswered = Traits.find((trait) => {
-					return !this.answers[this.traitName(trait.name, name)];
+					if (this.answers[name]) {
+						return !this.answers[name][trait.name];
+					}
+					return false;
 				});
 				return unanswered === undefined;
 			};
