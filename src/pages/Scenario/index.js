@@ -57,7 +57,10 @@ export default class Scenario extends Component {
 							key={i}
 							subject={name}
 							onAnswer={(value, trait) => {
-								this.answers[this.traitName(trait.name, name)] = value;
+								if (!this.answers[name]) {
+									this.answers[name] = {};
+								}
+								this.answers[`${name}`][trait.name] = value;
 								this.setState({done: this.isComplete()});
 							}}
 						/>
@@ -73,7 +76,7 @@ export default class Scenario extends Component {
 					<Label>This information will not be linked to your name.</Label>
 					{ this.state.done && this.state.relateToAnswer ? <NextButton onClick={() => {
 						this.answers.relatesTo = this.state.relateToAnswer;
-						sessionStorage.setItem(this.props.name, JSON.stringify(this.answers));
+						sessionStorage.setItem(this.props.name, JSON.stringify(this.answers, null, 2));
 						this.props.nextPage();
 					}}> 
 						Next

@@ -13,6 +13,7 @@ import {
 	Page,
 	Title,
 } from '../../components/General';
+import Loading from '../Loading';
 
 const pageOrder = [
 	'consent',
@@ -55,6 +56,42 @@ export default class Test extends Component {
 		}
 	}
 
+	sendConsent(cb) {
+		const consent = JSON.parse(sessionStorage.getItem('consent'));
+		fetch('https://f23r1svfs7.execute-api.us-east-1.amazonaws.com/dev/consent', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({name: consent.name}),
+		})
+		.then(resp => resp.json)
+		.then(data => {
+			console.log(data);
+			cb();
+		});
+	}
+
+	sendData(cb) {
+		const session = this.getSesseion();
+		delete session.consent;
+		delete session.done;
+		fetch('https://f23r1svfs7.execute-api.us-east-1.amazonaws.com/dev/results', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(session),
+		})
+		.then(resp => resp.json)
+		.then(data => {
+			console.log(data);
+			cb();
+		});
+	}
+
 	render() {
 		switch (this.state.page) {
 			case 0:
@@ -62,7 +99,11 @@ export default class Test extends Component {
 					<Consent
 						name='consent'
 						nextPage={() => {
-							this.setState({page: 1});
+							// set to loading
+							this.setState({page: -1});
+							this.sendConsent(() => {
+								this.setState({page: 1});
+							})
 						}}
 					/>
 				);
@@ -107,7 +148,11 @@ export default class Test extends Component {
 					<Scenario
 						name='scenario'
 						nextPage={() => {
-							this.setState({page: 6});
+							// set to loading
+							this.setState({page: -1});
+							this.sendData(() => {
+								this.setState({page: 6});
+							})
 						}}
 					/>
 				);
@@ -120,6 +165,12 @@ export default class Test extends Component {
 							console.log('cleared session storage');
 							window.location = '/';
 						}}
+					/>
+				);
+				case -1:
+				return (
+					<Loading
+						name='loading'
 					/>
 				);
 			default:
