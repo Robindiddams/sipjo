@@ -5,9 +5,6 @@ import {
 	Title,
 	Text,
 } from './components';
-import {
-	Hr,
-} from '../../components/General';
 
 export default class Home extends Component {
 	render() {
@@ -18,14 +15,11 @@ export default class Home extends Component {
 						Welcome!
 					</Title>
 					<Text>
-						This is a test that christina made up and it's super fun!
-						I'll type some more things so that xtina can see what it looks like to have a lot of text.
-						I might even add some <strong>text formatting</strong>, who knows.
-					</Text>
-					<Hr/>
-					<Text>
-						Look I even added a divider! wow! Everything a girl could ask for IMO.
-						Well I'm hungry so ill add more to this later.
+						The following experiment addresses personality and judgement of others.<br/><br/>
+						In order to accurately measure your personality, you will be asked to complete 3 tasks.<br/><br/>
+						You will fill out a self-evaluation form, complete a personality assessment, and then you will be asked to judge the personality traits of two other people.<br/><br/>
+						If you are focused, it should take no longer than 20 minutes for you to complete.<br/><br/>
+						Once you begin, you cannot go back to another page and you must complete every page for your results to be considered valid.<br/><br/>
 					</Text>
 					<StartButton href='/test'>
 						Start

@@ -19,7 +19,7 @@ export const StartButton = styled.a`
 
 
 export const Card = styled.div`
-    max-width: 400px;
+    max-width: 600px;
 	padding: 10px;
 	padding-bottom: 20px;
 	box-shadow: 1px 2px 3px lightgrey;
