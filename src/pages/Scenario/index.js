@@ -52,21 +52,23 @@ export default class Scenario extends Component {
 						Scenario
 					</Title>
 					<Label>{scenario_data.instructions}</Label>
-					<ArticleBox>
-						{ atob(scenario_data.scenario).split('\n').map((line, i) => (<Article key={i}>{line}</Article>)) }
-					</ArticleBox>
 					{ names.map((name, i) => (
-						<RateBox
-							key={i}
-							subject={name}
-							onAnswer={(value, trait) => {
-								if (!this.answers[name]) {
-									this.answers[name] = {};
-								}
-								this.answers[`${name}`][trait.name] = value;
-								this.setState({done: this.isComplete()});
-							}}
-						/>
+						<div key={i}>
+							{ i !== 0 ? <Label>The story is repeated here for your convenience.</Label> : '' }
+							<ArticleBox>
+								{ atob(scenario_data.scenario).split('\n').map((line, i) => (<Article key={i}>{line}</Article>)) }
+							</ArticleBox>
+							<RateBox
+								subject={name}
+								onAnswer={(value, trait) => {
+									if (!this.answers[name]) {
+										this.answers[name] = {};
+									}
+									this.answers[`${name}`][trait.name] = value;
+									this.setState({done: this.isComplete()});
+								}}
+							/>
+						</div>
 					))}
 					<Question
 						onChange={(event) => {

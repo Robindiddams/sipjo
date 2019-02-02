@@ -82,6 +82,7 @@ export default class Hexaco extends Component {
 					<Title>
 						Personality Test
 					</Title>
+					<Label>You are about to read 60 statements that describe you. Please rate how much you agree or disagree with each statement. Answer as accurately as possible but be careful not to spend too much time considering each statement.</Label>
 					<div>
 						{ Questions.map((q, i) => {
 							const { question, number } = q;

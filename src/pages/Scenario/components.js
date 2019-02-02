@@ -28,7 +28,8 @@ const Bold = styled.span`
 `;
 
 const RateBoxWrapper = styled.div`
-	margin-top:10vh;
+	margin-top:5vh;
+	margin-bottom:5vh;
 `;
 
 const QuestionWrapper = styled.div`

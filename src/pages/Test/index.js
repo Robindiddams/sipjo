@@ -91,6 +91,9 @@ export default class Test extends Component {
 			cb();
 		});
 	}
+	componentWillUpdate() {
+		window.scrollTo(0,0)
+	}
 
 	render() {
 		switch (this.state.page) {
