@@ -50,7 +50,7 @@ export default class Eval extends Component {
 						this.props.nextPage();
 					}}> 
 						Next
-					</NextButton> : <NextButton disabled>Next</NextButton>}
+					</NextButton> : <div><Label>You must move every slider to continue.</Label><NextButton disabled>Next</NextButton></div>}
 				</Page>
 			</React.Fragment>
 		);
